@@ -1,0 +1,30 @@
+def data():
+    while True:
+        chose_function_select = (f"功能選項:{function_select}\n")
+        i_chose = int(input(chose_function_select))#忘了加int就一直輪迴因為input是輸出str不是int
+        if i_chose == 1 :
+            i_want_add = str(input("想新增什麼選項"))
+            if i_want_add in products:
+                print("已有此項產品")
+            else:
+                i_want_add_price = str(input("多少元"))
+                products[i_want_add] = i_want_add_price     
+                #以為要加continue這裡才會回到 i_chose  
+
+        elif i_chose == 2:
+            all_pay = 0 #位置放錯導致價格一直歸零
+            while True:
+                
+                buing = (f"商品有:{products}\n") #沒有\n
+                i_want = str(input(buing))
+                if i_want == "end":
+                    break
+                elif i_want in products:
+                    price = products[i_want]#dic[]跟dic.get()容易搞混
+                    price = price[:-1]
+                    all_pay += int(price)
+                else:
+                    print("商品不存在，请重新输入。")
+        else:
+            print(all_pay)
+        
